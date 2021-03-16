@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ConnectionDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Attributes" EntityType="DatabaseModel.Attributes" />
+    <EntitySet Name="Cabinets" EntityType="DatabaseModel.Cabinets" />
+    <EntitySet Name="Groups" EntityType="DatabaseModel.Groups" />
+    <EntitySet Name="Hardware" EntityType="DatabaseModel.Hardware" />
+    <EntitySet Name="Histoty" EntityType="DatabaseModel.Histoty" />
+    <EntitySet Name="Workers" EntityType="DatabaseModel.Workers" />
+    <AssociationSet Name="FK_Histoty_ToCabinet" Association="DatabaseModel.FK_Histoty_ToCabinet">
+      <End Role="Cabinets" EntitySet="Cabinets" />
+      <End Role="Histoty" EntitySet="Histoty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hardware_ToGroups" Association="DatabaseModel.FK_Hardware_ToGroups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Hardware" EntitySet="Hardware" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Histoty_ToHardware" Association="DatabaseModel.FK_Histoty_ToHardware">
+      <End Role="Hardware" EntitySet="Hardware" />
+      <End Role="Histoty" EntitySet="Histoty" />
+    </AssociationSet>
+    <AssociationSet Name="GroupAttributes" Association="DatabaseModel.GroupAttributes">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Attributes" EntitySet="Attributes" />
+    </AssociationSet>
+    <AssociationSet Name="ResponsiblePersons" Association="DatabaseModel.ResponsiblePersons">
+      <End Role="Workers" EntitySet="Workers" />
+      <End Role="Cabinets" EntitySet="Cabinets" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Attributes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Groups" Relationship="DatabaseModel.GroupAttributes" FromRole="Attributes" ToRole="Groups" />
+  </EntityType>
+  <EntityType Name="Cabinets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Histoty" Relationship="DatabaseModel.FK_Histoty_ToCabinet" FromRole="Cabinets" ToRole="Histoty" />
+    <NavigationProperty Name="Workers" Relationship="DatabaseModel.ResponsiblePersons" FromRole="Cabinets" ToRole="Workers" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Hardware_ToGroups" FromRole="Groups" ToRole="Hardware" />
+    <NavigationProperty Name="Attributes" Relationship="DatabaseModel.GroupAttributes" FromRole="Groups" ToRole="Attributes" />
+  </EntityType>
+  <EntityType Name="Hardware">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GroupId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Groups" Relationship="DatabaseModel.FK_Hardware_ToGroups" FromRole="Hardware" ToRole="Groups" />
+    <NavigationProperty Name="Histoty" Relationship="DatabaseModel.FK_Histoty_ToHardware" FromRole="Hardware" ToRole="Histoty" />
+  </EntityType>
+  <EntityType Name="Histoty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IsEnterUsing" Type="Boolean" Nullable="false" />
+    <Property Name="CabinetId" Type="Int32" Nullable="false" />
+    <Property Name="HardwareId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cabinets" Relationship="DatabaseModel.FK_Histoty_ToCabinet" FromRole="Histoty" ToRole="Cabinets" />
+    <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Histoty_ToHardware" FromRole="Histoty" ToRole="Hardware" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cabinets" Relationship="DatabaseModel.ResponsiblePersons" FromRole="Workers" ToRole="Cabinets" />
+  </EntityType>
+  <Association Name="FK_Histoty_ToCabinet">
+    <End Type="DatabaseModel.Cabinets" Role="Cabinets" Multiplicity="1" />
+    <End Type="DatabaseModel.Histoty" Role="Histoty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cabinets">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Histoty">
+        <PropertyRef Name="CabinetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hardware_ToGroups">
+    <End Type="DatabaseModel.Groups" Role="Groups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Hardware">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Histoty_ToHardware">
+    <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
+    <End Type="DatabaseModel.Histoty" Role="Histoty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Histoty">
+        <PropertyRef Name="HardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupAttributes">
+    <End Type="DatabaseModel.Groups" Role="Groups" Multiplicity="*" />
+    <End Type="DatabaseModel.Attributes" Role="Attributes" Multiplicity="*" />
+  </Association>
+  <Association Name="ResponsiblePersons">
+    <End Type="DatabaseModel.Workers" Role="Workers" Multiplicity="*" />
+    <End Type="DatabaseModel.Cabinets" Role="Cabinets" Multiplicity="*" />
+  </Association>
+</Schema>
