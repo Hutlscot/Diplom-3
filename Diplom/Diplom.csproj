@@ -79,13 +79,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Attributes.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Cabinets.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Groups.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Hardware.cs">
@@ -94,20 +88,41 @@
     <Compile Include="Histoty.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="MainGroup.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\PartialHardware.cs" />
     <Compile Include="OtherClasses\Transfer.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="OtherHardwares.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Printers.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddHardwareWindow.xaml.cs">
+      <DependentUpon>AddHardwareWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ListHardwarePage.xaml.cs">
       <DependentUpon>ListHardwarePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VM\ListHardwareVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
     <Compile Include="Workers.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Сonsumables.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Page Include="View\AddHardwareWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ListHardwarePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -203,8 +218,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

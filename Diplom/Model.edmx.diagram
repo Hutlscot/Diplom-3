@@ -4,17 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5e6e4def92e94b49b92c18ee97053e7e" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabaseModel.Attributes" Width="1.5" PointX="3" PointY="4" />
-        <EntityTypeShape EntityType="DatabaseModel.Cabinets" Width="1.5" PointX="3" PointY="7.375" />
-        <EntityTypeShape EntityType="DatabaseModel.Groups" Width="1.5" PointX="0.75" PointY="2.5" />
-        <EntityTypeShape EntityType="DatabaseModel.Hardware" Width="1.5" PointX="3" PointY="1.25" />
-        <EntityTypeShape EntityType="DatabaseModel.Histoty" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="DatabaseModel.Workers" Width="1.5" PointX="0.75" PointY="7.125" />
+      <Diagram DiagramId="5e6e4def92e94b49b92c18ee97053e7e" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="DatabaseModel.Cabinets" Width="1.5" PointX="3.75" PointY="0.875" />
+        <EntityTypeShape EntityType="DatabaseModel.Hardware" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="DatabaseModel.Histoty" Width="1.5" PointX="6" PointY="7.625" />
+        <EntityTypeShape EntityType="DatabaseModel.MainGroup" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="DatabaseModel.OtherHardwares" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="DatabaseModel.Printers" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="DatabaseModel.Workers" Width="1.5" PointX="1.5" PointY="0.75" />
+        <EntityTypeShape EntityType="DatabaseModel.Сonsumables" Width="1.5" PointX="3" PointY="12" />
         <AssociationConnector Association="DatabaseModel.FK_Histoty_ToCabinet" />
-        <AssociationConnector Association="DatabaseModel.FK_Hardware_ToGroups" />
+        <AssociationConnector Association="DatabaseModel.FK_Consumables_ToHardware" />
         <AssociationConnector Association="DatabaseModel.FK_Histoty_ToHardware" />
-        <AssociationConnector Association="DatabaseModel.GroupAttributes" />
+        <AssociationConnector Association="DatabaseModel.FK_MainGroup_ToHardware" />
+        <AssociationConnector Association="DatabaseModel.FK_OtherHardwares_ToHardware" />
+        <AssociationConnector Association="DatabaseModel.FK_Printers_ToHardware" />
         <AssociationConnector Association="DatabaseModel.ResponsiblePersons" />
       </Diagram>
     </edmx:Diagrams>

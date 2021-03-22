@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Diplom\Diplom\App.xaml
-21452434052
+3-749921781
 41432446814
-19-539731408
+24247020381
 18-1733640825
-View\ListHardwarePage.xaml;View\MainWindow.xaml;
+View\AddHardwareWindow.xaml;View\ListHardwarePage.xaml;View\MainWindow.xaml;
 
-True
+False
 

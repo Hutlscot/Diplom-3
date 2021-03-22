@@ -1,33 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Хранилище DatabaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Attributes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
   <EntityType Name="Cabinets">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Number" Type="nvarchar" MaxLength="10" Nullable="false" />
-  </EntityType>
-  <EntityType Name="GroupAttributes">
-    <Key>
-      <PropertyRef Name="GroupId" />
-      <PropertyRef Name="AttributeId" />
-    </Key>
-    <Property Name="GroupId" Type="int" Nullable="false" />
-    <Property Name="AttributeId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Groups">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Hardware">
     <Key>
@@ -65,48 +43,6 @@
     <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Position" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_GroupAttributes_ToAttributes">
-    <End Role="Groups" Type="Self.Groups" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="GroupAttributes" Type="Self.GroupAttributes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Groups">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="GroupAttributes">
-        <PropertyRef Name="GroupId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_GroupAttributes_ToGroup">
-    <End Role="Attributes" Type="Self.Attributes" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="GroupAttributes" Type="Self.GroupAttributes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Attributes">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="GroupAttributes">
-        <PropertyRef Name="AttributeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Hardware_ToGroups">
-    <End Role="Groups" Type="Self.Groups" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Hardware" Type="Self.Hardware" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Groups">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Hardware">
-        <PropertyRef Name="GroupId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Histoty_ToCabinet">
     <End Role="Cabinets" Type="Self.Cabinets" Multiplicity="1" />
     <End Role="Histoty" Type="Self.Histoty" Multiplicity="*" />
@@ -160,26 +96,11 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Хранилище DatabaseModelContainer">
-    <EntitySet Name="Attributes" EntityType="Self.Attributes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cabinets" EntityType="Self.Cabinets" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="GroupAttributes" EntityType="Self.GroupAttributes" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Hardware" EntityType="Self.Hardware" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Histoty" EntityType="Self.Histoty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ResponsiblePersons" EntityType="Self.ResponsiblePersons" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Workers" EntityType="Self.Workers" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_GroupAttributes_ToAttributes" Association="Self.FK_GroupAttributes_ToAttributes">
-      <End Role="Groups" EntitySet="Groups" />
-      <End Role="GroupAttributes" EntitySet="GroupAttributes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_GroupAttributes_ToGroup" Association="Self.FK_GroupAttributes_ToGroup">
-      <End Role="Attributes" EntitySet="Attributes" />
-      <End Role="GroupAttributes" EntitySet="GroupAttributes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Hardware_ToGroups" Association="Self.FK_Hardware_ToGroups">
-      <End Role="Groups" EntitySet="Groups" />
-      <End Role="Hardware" EntitySet="Hardware" />
-    </AssociationSet>
     <AssociationSet Name="FK_Histoty_ToCabinet" Association="Self.FK_Histoty_ToCabinet">
       <End Role="Cabinets" EntitySet="Cabinets" />
       <End Role="Histoty" EntitySet="Histoty" />

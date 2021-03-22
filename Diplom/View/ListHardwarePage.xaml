@@ -4,11 +4,30 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Diplom.View"
+      xmlns:vm="clr-namespace:Diplom.VM"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Список техники" Style="{StaticResource StylePage}">
-
+    <Page.DataContext>
+        <vm:ListHardwareVM></vm:ListHardwareVM>
+    </Page.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <DataGrid Name="grid" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" ItemsSource="{Binding ListHardwares}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Серийник" Binding="{Binding SerialNumber}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Groups.Name}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="1">
+            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Left">Добавить оборуд.</Button>
+            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center">Изменить оборуд.</Button>
+            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Right">Удалить оборуд.</Button>
+        </Grid>
     </Grid>
 </Page>

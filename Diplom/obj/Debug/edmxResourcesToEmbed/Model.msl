@@ -1,26 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище DatabaseModelContainer" CdmEntityContainer="ConnectionDB">
-    <EntitySetMapping Name="Attributes">
-      <EntityTypeMapping TypeName="DatabaseModel.Attributes">
-        <MappingFragment StoreEntitySet="Attributes">
-          <ScalarProperty Name="Название" ColumnName="Название" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Cabinets">
       <EntityTypeMapping TypeName="DatabaseModel.Cabinets">
         <MappingFragment StoreEntitySet="Cabinets">
           <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Groups">
-      <EntityTypeMapping TypeName="DatabaseModel.Groups">
-        <MappingFragment StoreEntitySet="Groups">
-          <ScalarProperty Name="Название" ColumnName="Название" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -56,14 +40,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="GroupAttributes" TypeName="DatabaseModel.GroupAttributes" StoreEntitySet="GroupAttributes">
-      <EndProperty Name="Attributes">
-        <ScalarProperty Name="Id" ColumnName="AttributeId" />
-      </EndProperty>
-      <EndProperty Name="Groups">
-        <ScalarProperty Name="Id" ColumnName="GroupId" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="ResponsiblePersons" TypeName="DatabaseModel.ResponsiblePersons" StoreEntitySet="ResponsiblePersons">
       <EndProperty Name="Cabinets">
         <ScalarProperty Name="Id" ColumnName="CabinetId" />

@@ -25,11 +25,13 @@ namespace Diplom
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Attributes> Attributes { get; set; }
         public virtual DbSet<Cabinets> Cabinets { get; set; }
-        public virtual DbSet<Groups> Groups { get; set; }
         public virtual DbSet<Hardware> Hardware { get; set; }
         public virtual DbSet<Histoty> Histoty { get; set; }
+        public virtual DbSet<MainGroup> MainGroup { get; set; }
+        public virtual DbSet<OtherHardwares> OtherHardwares { get; set; }
+        public virtual DbSet<Printers> Printers { get; set; }
         public virtual DbSet<Workers> Workers { get; set; }
+        public virtual DbSet<Сonsumables> Сonsumables { get; set; }
     }
 }

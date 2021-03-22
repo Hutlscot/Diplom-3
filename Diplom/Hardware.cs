@@ -21,11 +21,14 @@ namespace Diplom
         }
     
         public int Id { get; set; }
-        public string Название { get; set; }
-        public int GroupId { get; set; }
+        public string Name { get; set; }
+        public string SerialNumber { get; set; }
     
-        public virtual Groups Groups { get; set; }
+        public virtual Сonsumables Сonsumables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Histoty> Histoty { get; set; }
+        public virtual MainGroup MainGroup { get; set; }
+        public virtual OtherHardwares OtherHardwares { get; set; }
+        public virtual Printers Printers { get; set; }
     }
 }
