@@ -1,0 +1,25 @@
+﻿<Page x:Class="Diplom.View.AddWorkerPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diplom.VM"
+        mc:Ignorable="d"
+        Title="Добавление сотрудника" Height="400" Width="600" Style="{StaticResource StylePage}">
+    <Page.DataContext>
+        <local:AddWorkerVM></local:AddWorkerVM>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel Width="300" Margin="10" Orientation="Vertical">
+            <TextBlock Margin="5">Фамилия:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedWorker.LastName}"></TextBox>
+            <TextBlock Margin="5">Имя:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedWorker.Name}"></TextBox>
+            <TextBlock Margin="5">Отчество:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedWorker.MiddleName}"></TextBox>
+            <TextBlock Margin="5">Должность:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedWorker.Position}"></TextBox>
+            <Button Style="{StaticResource DefaultButton}" Command="{Binding AddWorkerCommand}">Добавить</Button>
+        </StackPanel>
+    </Grid>
+</Page>

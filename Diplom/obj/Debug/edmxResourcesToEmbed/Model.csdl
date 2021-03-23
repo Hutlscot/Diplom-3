@@ -4,14 +4,34 @@
     <EntitySet Name="Cabinets" EntityType="DatabaseModel.Cabinets" />
     <EntitySet Name="Hardware" EntityType="DatabaseModel.Hardware" />
     <EntitySet Name="Histoty" EntityType="DatabaseModel.Histoty" />
+    <EntitySet Name="MainGroup" EntityType="DatabaseModel.MainGroup" />
+    <EntitySet Name="OtherHardwares" EntityType="DatabaseModel.OtherHardwares" />
+    <EntitySet Name="Printers" EntityType="DatabaseModel.Printers" />
     <EntitySet Name="Workers" EntityType="DatabaseModel.Workers" />
+    <EntitySet Name="Сonsumables" EntityType="DatabaseModel.Сonsumables" />
     <AssociationSet Name="FK_Histoty_ToCabinet" Association="DatabaseModel.FK_Histoty_ToCabinet">
       <End Role="Cabinets" EntitySet="Cabinets" />
       <End Role="Histoty" EntitySet="Histoty" />
     </AssociationSet>
+    <AssociationSet Name="FK_Consumables_ToHardware" Association="DatabaseModel.FK_Consumables_ToHardware">
+      <End Role="Hardware" EntitySet="Hardware" />
+      <End Role="Сonsumables" EntitySet="Сonsumables" />
+    </AssociationSet>
     <AssociationSet Name="FK_Histoty_ToHardware" Association="DatabaseModel.FK_Histoty_ToHardware">
       <End Role="Hardware" EntitySet="Hardware" />
       <End Role="Histoty" EntitySet="Histoty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MainGroup_ToHardware" Association="DatabaseModel.FK_MainGroup_ToHardware">
+      <End Role="Hardware" EntitySet="Hardware" />
+      <End Role="MainGroup" EntitySet="MainGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OtherHardwares_ToHardware" Association="DatabaseModel.FK_OtherHardwares_ToHardware">
+      <End Role="Hardware" EntitySet="Hardware" />
+      <End Role="OtherHardwares" EntitySet="OtherHardwares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Printers_ToHardware" Association="DatabaseModel.FK_Printers_ToHardware">
+      <End Role="Hardware" EntitySet="Hardware" />
+      <End Role="Printers" EntitySet="Printers" />
     </AssociationSet>
     <AssociationSet Name="ResponsiblePersons" Association="DatabaseModel.ResponsiblePersons">
       <End Role="Workers" EntitySet="Workers" />
@@ -32,9 +52,13 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Название" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="GroupId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Сonsumables" Relationship="DatabaseModel.FK_Consumables_ToHardware" FromRole="Hardware" ToRole="Сonsumables" />
     <NavigationProperty Name="Histoty" Relationship="DatabaseModel.FK_Histoty_ToHardware" FromRole="Hardware" ToRole="Histoty" />
+    <NavigationProperty Name="MainGroup" Relationship="DatabaseModel.FK_MainGroup_ToHardware" FromRole="Hardware" ToRole="MainGroup" />
+    <NavigationProperty Name="OtherHardwares" Relationship="DatabaseModel.FK_OtherHardwares_ToHardware" FromRole="Hardware" ToRole="OtherHardwares" />
+    <NavigationProperty Name="Printers" Relationship="DatabaseModel.FK_Printers_ToHardware" FromRole="Hardware" ToRole="Printers" />
   </EntityType>
   <EntityType Name="Histoty">
     <Key>
@@ -48,6 +72,35 @@
     <NavigationProperty Name="Cabinets" Relationship="DatabaseModel.FK_Histoty_ToCabinet" FromRole="Histoty" ToRole="Cabinets" />
     <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Histoty_ToHardware" FromRole="Histoty" ToRole="Hardware" />
   </EntityType>
+  <EntityType Name="MainGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModelProcessor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RAM" Type="Int32" Nullable="false" />
+    <Property Name="DiskSize" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_MainGroup_ToHardware" FromRole="MainGroup" ToRole="Hardware" />
+  </EntityType>
+  <EntityType Name="OtherHardwares">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_OtherHardwares_ToHardware" FromRole="OtherHardwares" ToRole="Hardware" />
+  </EntityType>
+  <EntityType Name="Printers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeCartridge" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HavePrintDoubleList" Type="Boolean" Nullable="false" />
+    <Property Name="IsMFY" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Printers_ToHardware" FromRole="Printers" ToRole="Hardware" />
+  </EntityType>
   <EntityType Name="Workers">
     <Key>
       <PropertyRef Name="Id" />
@@ -58,6 +111,16 @@
     <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Cabinets" Relationship="DatabaseModel.ResponsiblePersons" FromRole="Workers" ToRole="Cabinets" />
+  </EntityType>
+  <EntityType Name="Сonsumables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Interface" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Consumables_ToHardware" FromRole="Сonsumables" ToRole="Hardware" />
   </EntityType>
   <Association Name="FK_Histoty_ToCabinet">
     <End Type="DatabaseModel.Cabinets" Role="Cabinets" Multiplicity="1" />
@@ -71,6 +134,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Consumables_ToHardware">
+    <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
+    <End Type="DatabaseModel.Сonsumables" Role="Сonsumables" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Hardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Сonsumables">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Histoty_ToHardware">
     <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
     <End Type="DatabaseModel.Histoty" Role="Histoty" Multiplicity="*" />
@@ -80,6 +155,42 @@
       </Principal>
       <Dependent Role="Histoty">
         <PropertyRef Name="HardwareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MainGroup_ToHardware">
+    <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
+    <End Type="DatabaseModel.MainGroup" Role="MainGroup" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Hardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MainGroup">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OtherHardwares_ToHardware">
+    <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
+    <End Type="DatabaseModel.OtherHardwares" Role="OtherHardwares" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Hardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OtherHardwares">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Printers_ToHardware">
+    <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
+    <End Type="DatabaseModel.Printers" Role="Printers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Hardware">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Printers">
+        <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

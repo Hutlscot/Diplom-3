@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Diplom.View;
 
 namespace Diplom.OtherClasses
 {
@@ -14,7 +15,19 @@ namespace Diplom.OtherClasses
 
         public static void GoTo(string namePage)
         {
-            MessageBox.Show(namePage);
+            switch (namePage)
+            {
+                case "Добавление сотрудника":
+                {
+                    frame.Navigate(new AddWorkerPage());
+                    break;
+                }
+                case "Сотрудники":
+                {
+                    frame.Navigate(new ListWorkersPage());
+                    break;
+                }
+            }
         }
     }
 }

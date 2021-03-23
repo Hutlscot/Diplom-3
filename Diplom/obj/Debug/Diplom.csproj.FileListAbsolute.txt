@@ -27,3 +27,8 @@ D:\Diplom\Diplom\obj\Debug\Diplom.exe
 D:\Diplom\Diplom\obj\Debug\Diplom.pdb
 D:\Diplom\Diplom\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Diplom\Diplom\obj\Debug\View\AddHardwareWindow.g.cs
+D:\Diplom\Diplom\obj\Debug\View\AddHardwareWindow.baml
+D:\Diplom\Diplom\obj\Debug\View\ListWorkersPage.g.cs
+D:\Diplom\Diplom\obj\Debug\View\ListWorkersPage.baml
+D:\Diplom\Diplom\obj\Debug\View\AddWorkerPage.g.cs
+D:\Diplom\Diplom\obj\Debug\View\AddWorkerPage.baml

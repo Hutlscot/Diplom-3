@@ -108,10 +108,18 @@
     <Compile Include="View\AddHardwareWindow.xaml.cs">
       <DependentUpon>AddHardwareWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddWorkerPage.xaml.cs">
+      <DependentUpon>AddWorkerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ListHardwarePage.xaml.cs">
       <DependentUpon>ListHardwarePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ListWorkersPage.xaml.cs">
+      <DependentUpon>ListWorkersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VM\AddWorkerVM.cs" />
     <Compile Include="VM\ListHardwareVM.cs" />
+    <Compile Include="VM\ListWorkersVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
     <Compile Include="Workers.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -123,7 +131,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddWorkerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ListHardwarePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListWorkersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

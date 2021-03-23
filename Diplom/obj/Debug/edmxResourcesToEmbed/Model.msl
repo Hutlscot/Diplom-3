@@ -12,8 +12,8 @@
     <EntitySetMapping Name="Hardware">
       <EntityTypeMapping TypeName="DatabaseModel.Hardware">
         <MappingFragment StoreEntitySet="Hardware">
-          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -29,6 +29,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="MainGroup">
+      <EntityTypeMapping TypeName="DatabaseModel.MainGroup">
+        <MappingFragment StoreEntitySet="MainGroup">
+          <ScalarProperty Name="DiskSize" ColumnName="DiskSize" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="ModelProcessor" ColumnName="ModelProcessor" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OtherHardwares">
+      <EntityTypeMapping TypeName="DatabaseModel.OtherHardwares">
+        <MappingFragment StoreEntitySet="OtherHardwares">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Printers">
+      <EntityTypeMapping TypeName="DatabaseModel.Printers">
+        <MappingFragment StoreEntitySet="Printers">
+          <ScalarProperty Name="IsMFY" ColumnName="IsMFY" />
+          <ScalarProperty Name="HavePrintDoubleList" ColumnName="HavePrintDoubleList" />
+          <ScalarProperty Name="TypeCartridge" ColumnName="TypeCartridge" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Workers">
       <EntityTypeMapping TypeName="DatabaseModel.Workers">
         <MappingFragment StoreEntitySet="Workers">
@@ -36,6 +65,16 @@
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сonsumables">
+      <EntityTypeMapping TypeName="DatabaseModel.Сonsumables">
+        <MappingFragment StoreEntitySet="Сonsumables">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Interface" ColumnName="Interface" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

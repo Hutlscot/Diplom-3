@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Collections.ObjectModel;
+
 namespace Diplom
 {
     using System;

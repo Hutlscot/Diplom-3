@@ -12,7 +12,7 @@ namespace Diplom.VM
         public ListHardwareVM()
         {
             var conn = new ConnectionDB();
-            ListHardwares = conn.Hardware;
+            //ListHardwares = conn.Hardware;
         }
     }
 }
