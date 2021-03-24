@@ -14,7 +14,6 @@ namespace Diplom.VM
         }
 
         private RelayCommand addWorkerCommand;
-
         public RelayCommand AddWorkerCommand
         {
             get

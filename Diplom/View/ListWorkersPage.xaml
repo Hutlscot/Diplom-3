@@ -29,7 +29,7 @@
             <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Left" 
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Добавление сотрудника" Content="Добавление сотрудника"></Button>
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center">Изменить сотрудника</Button>
+            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" Visibility="Hidden">Изменить сотрудника</Button>
             <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Right" 
                     Command="{Binding DelWorkerCommand}">Удалить сотрудника</Button>
         </Grid>

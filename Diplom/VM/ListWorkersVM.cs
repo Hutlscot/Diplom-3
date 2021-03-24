@@ -67,15 +67,11 @@ namespace Diplom.VM
                     {
                         try
                         {
-                            var conn = new ConnectionDB();
-                            conn.Workers.Remove(conn.Workers.Find(selectedWorker.Id));
-                            conn.SaveChanges();
-                            Transfer.GoTo("Сотрудники");
-                            MessageBox.Show("Успешно удалено");
+                                //TODO дописать   
                         }
                         catch (Exception e)
                         {
-                            MessageBox.Show($"Ошибка удаления {e}");
+                            MessageBox.Show($"Ошибка {e}");
                         }
 
                     }));

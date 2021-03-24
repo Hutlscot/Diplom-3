@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Cabinets">
       <EntityTypeMapping TypeName="DatabaseModel.Cabinets">
         <MappingFragment StoreEntitySet="Cabinets">
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

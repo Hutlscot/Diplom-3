@@ -96,7 +96,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\PartialCabinets.cs" />
     <Compile Include="Model\PartialHardware.cs" />
+    <Compile Include="Model\PartialWorkers.cs" />
     <Compile Include="OtherClasses\Transfer.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="OtherHardwares.cs">
@@ -105,11 +107,17 @@
     <Compile Include="Printers.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\AddCabinetPage.xaml.cs">
+      <DependentUpon>AddCabinetPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddHardwareWindow.xaml.cs">
       <DependentUpon>AddHardwareWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AddWorkerPage.xaml.cs">
       <DependentUpon>AddWorkerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListCabitensPage.xaml.cs">
+      <DependentUpon>ListCabitensPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ListHardwarePage.xaml.cs">
       <DependentUpon>ListHardwarePage.xaml</DependentUpon>
@@ -117,7 +125,9 @@
     <Compile Include="View\ListWorkersPage.xaml.cs">
       <DependentUpon>ListWorkersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VM\AddCabinetVM.cs" />
     <Compile Include="VM\AddWorkerVM.cs" />
+    <Compile Include="VM\ListCabinetsVM.cs" />
     <Compile Include="VM\ListHardwareVM.cs" />
     <Compile Include="VM\ListWorkersVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
@@ -127,11 +137,19 @@
     <Compile Include="Сonsumables.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Page Include="View\AddCabinetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddHardwareWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddWorkerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListCabitensPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

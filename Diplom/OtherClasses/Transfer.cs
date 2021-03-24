@@ -27,6 +27,26 @@ namespace Diplom.OtherClasses
                     frame.Navigate(new ListWorkersPage());
                     break;
                 }
+                case "Кабинеты":
+                {
+                    frame.Navigate(new ListCabitensPage());
+                    break;
+                }
+                case "История учета":
+                {
+                    MessageBox.Show("Еще пока нет команды");
+                    break;
+                }
+                case "Оборудование":
+                {
+                    frame.Navigate(new ListHardwarePage());
+                    break;
+                }
+                case "Добавление кабинета":
+                {
+                    frame.Navigate(new AddCabinetPage());
+                    break;
+                }
             }
         }
     }
