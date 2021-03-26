@@ -26,7 +26,7 @@ namespace Diplom
         {
             InitializeComponent();
             Transfer.frame = frame;
-            Transfer.frame.Navigate(new ListHardwarePage());
+            Transfer.frame.Navigate(new HistoryPage());
         }
     }
 }

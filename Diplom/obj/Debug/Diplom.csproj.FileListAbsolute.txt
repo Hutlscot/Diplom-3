@@ -26,8 +26,6 @@ D:\Diplom\Diplom\obj\Debug\Diplom.csproj.CopyComplete
 D:\Diplom\Diplom\obj\Debug\Diplom.exe
 D:\Diplom\Diplom\obj\Debug\Diplom.pdb
 D:\Diplom\Diplom\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\Diplom\Diplom\obj\Debug\View\AddHardwareWindow.g.cs
-D:\Diplom\Diplom\obj\Debug\View\AddHardwareWindow.baml
 D:\Diplom\Diplom\obj\Debug\View\ListWorkersPage.g.cs
 D:\Diplom\Diplom\obj\Debug\View\ListWorkersPage.baml
 D:\Diplom\Diplom\obj\Debug\View\AddWorkerPage.g.cs
@@ -36,3 +34,11 @@ D:\Diplom\Diplom\obj\Debug\View\ListCabitensPage.g.cs
 D:\Diplom\Diplom\obj\Debug\View\ListCabitensPage.baml
 D:\Diplom\Diplom\obj\Debug\View\AddCabinetPage.g.cs
 D:\Diplom\Diplom\obj\Debug\View\AddCabinetPage.baml
+D:\Diplom\Diplom\obj\Debug\View\HistoryPage.g.cs
+D:\Diplom\Diplom\obj\Debug\View\HistoryPage.baml
+D:\Diplom\Diplom\obj\Debug\View\AddHistory.g.cs
+D:\Diplom\Diplom\obj\Debug\View\AddHistory.baml
+D:\Diplom\Diplom\obj\Debug\View\MainGroupPage.g.cs
+D:\Diplom\Diplom\obj\Debug\View\MainGroupPage.baml
+D:\Diplom\Diplom\obj\Debug\View\AddMainGroupPage.g.cs
+D:\Diplom\Diplom\obj\Debug\View\AddMainGroupPage.baml

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище DatabaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище DatabaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cabinets">
           <Key>
             <PropertyRef Name="Id" />
@@ -26,7 +26,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="IsEnterUsing" Type="bit" Nullable="false" />
           <Property Name="CabinetId" Type="int" Nullable="false" />
           <Property Name="HardwareId" Type="int" Nullable="false" />
@@ -59,11 +59,11 @@
         </EntityType>
         <EntityType Name="ResponsiblePersons">
           <Key>
-            <PropertyRef Name="CabinetId" />
-            <PropertyRef Name="WorkerId" />
+            <PropertyRef Name="Workers_Id" />
+            <PropertyRef Name="Cabinets_Id" />
           </Key>
-          <Property Name="CabinetId" Type="int" Nullable="false" />
-          <Property Name="WorkerId" Type="int" Nullable="false" />
+          <Property Name="Workers_Id" Type="int" Nullable="false" />
+          <Property Name="Cabinets_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Workers">
           <Key>
@@ -156,31 +156,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ResponsiblePersons_ToCabinets">
-          <End Role="Workers" Type="Self.Workers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ResponsiblePersons" Type="Self.ResponsiblePersons" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Workers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ResponsiblePersons">
-              <PropertyRef Name="WorkerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ResponsiblePersons_ToWorkers">
-          <End Role="Cabinets" Type="Self.Cabinets" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_ResponsiblePersons_Cabinets">
+          <End Role="Cabinets" Type="Self.Cabinets" Multiplicity="1" />
           <End Role="ResponsiblePersons" Type="Self.ResponsiblePersons" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cabinets">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ResponsiblePersons">
-              <PropertyRef Name="CabinetId" />
+              <PropertyRef Name="Cabinets_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResponsiblePersons_Workers">
+          <End Role="Workers" Type="Self.Workers" Multiplicity="1" />
+          <End Role="ResponsiblePersons" Type="Self.ResponsiblePersons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ResponsiblePersons">
+              <PropertyRef Name="Workers_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -218,145 +214,108 @@
             <End Role="Hardware" EntitySet="Hardware" />
             <End Role="Printers" EntitySet="Printers" />
           </AssociationSet>
-          <AssociationSet Name="FK_ResponsiblePersons_ToCabinets" Association="Self.FK_ResponsiblePersons_ToCabinets">
-            <End Role="Workers" EntitySet="Workers" />
-            <End Role="ResponsiblePersons" EntitySet="ResponsiblePersons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ResponsiblePersons_ToWorkers" Association="Self.FK_ResponsiblePersons_ToWorkers">
+          <AssociationSet Name="FK_ResponsiblePersons_Cabinets" Association="Self.FK_ResponsiblePersons_Cabinets">
             <End Role="Cabinets" EntitySet="Cabinets" />
             <End Role="ResponsiblePersons" EntitySet="ResponsiblePersons" />
           </AssociationSet>
+          <AssociationSet Name="FK_ResponsiblePersons_Workers" Association="Self.FK_ResponsiblePersons_Workers">
+            <End Role="Workers" EntitySet="Workers" />
+            <End Role="ResponsiblePersons" EntitySet="ResponsiblePersons" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ConnectionDB" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cabinets" EntityType="DatabaseModel.Cabinets" />
-          <EntitySet Name="Hardware" EntityType="DatabaseModel.Hardware" />
-          <EntitySet Name="Histoty" EntityType="DatabaseModel.Histoty" />
-          <EntitySet Name="MainGroup" EntityType="DatabaseModel.MainGroup" />
-          <EntitySet Name="OtherHardwares" EntityType="DatabaseModel.OtherHardwares" />
-          <EntitySet Name="Printers" EntityType="DatabaseModel.Printers" />
-          <EntitySet Name="Workers" EntityType="DatabaseModel.Workers" />
-          <EntitySet Name="Сonsumables" EntityType="DatabaseModel.Сonsumables" />
-          <AssociationSet Name="FK_Histoty_ToCabinet" Association="DatabaseModel.FK_Histoty_ToCabinet">
-            <End Role="Cabinets" EntitySet="Cabinets" />
-            <End Role="Histoty" EntitySet="Histoty" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Consumables_ToHardware" Association="DatabaseModel.FK_Consumables_ToHardware">
-            <End Role="Hardware" EntitySet="Hardware" />
-            <End Role="Сonsumables" EntitySet="Сonsumables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Histoty_ToHardware" Association="DatabaseModel.FK_Histoty_ToHardware">
-            <End Role="Hardware" EntitySet="Hardware" />
-            <End Role="Histoty" EntitySet="Histoty" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MainGroup_ToHardware" Association="DatabaseModel.FK_MainGroup_ToHardware">
-            <End Role="Hardware" EntitySet="Hardware" />
-            <End Role="MainGroup" EntitySet="MainGroup" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OtherHardwares_ToHardware" Association="DatabaseModel.FK_OtherHardwares_ToHardware">
-            <End Role="Hardware" EntitySet="Hardware" />
-            <End Role="OtherHardwares" EntitySet="OtherHardwares" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Printers_ToHardware" Association="DatabaseModel.FK_Printers_ToHardware">
-            <End Role="Hardware" EntitySet="Hardware" />
-            <End Role="Printers" EntitySet="Printers" />
-          </AssociationSet>
-          <AssociationSet Name="ResponsiblePersons" Association="DatabaseModel.ResponsiblePersons">
-            <End Role="Workers" EntitySet="Workers" />
-            <End Role="Cabinets" EntitySet="Cabinets" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Cabinets">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Number" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Floor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Histoty" Relationship="DatabaseModel.FK_Histoty_ToCabinet" FromRole="Cabinets" ToRole="Histoty" />
-          <NavigationProperty Name="Workers" Relationship="DatabaseModel.ResponsiblePersons" FromRole="Cabinets" ToRole="Workers" />
+          <Property Name="Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Floor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Histoty" Relationship="Self.FK_Histoty_ToCabinet" FromRole="Cabinets" ToRole="Histoty" />
+          <NavigationProperty Name="Workers" Relationship="Self.ResponsiblePersons" FromRole="Cabinets" ToRole="Workers" />
         </EntityType>
         <EntityType Name="Hardware">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Сonsumables" Relationship="DatabaseModel.FK_Consumables_ToHardware" FromRole="Hardware" ToRole="Сonsumables" />
-          <NavigationProperty Name="Histoty" Relationship="DatabaseModel.FK_Histoty_ToHardware" FromRole="Hardware" ToRole="Histoty" />
-          <NavigationProperty Name="MainGroup" Relationship="DatabaseModel.FK_MainGroup_ToHardware" FromRole="Hardware" ToRole="MainGroup" />
-          <NavigationProperty Name="OtherHardwares" Relationship="DatabaseModel.FK_OtherHardwares_ToHardware" FromRole="Hardware" ToRole="OtherHardwares" />
-          <NavigationProperty Name="Printers" Relationship="DatabaseModel.FK_Printers_ToHardware" FromRole="Hardware" ToRole="Printers" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Сonsumables" Relationship="Self.FK_Consumables_ToHardware" FromRole="Hardware" ToRole="Сonsumables" />
+          <NavigationProperty Name="Histoty" Relationship="Self.FK_Histoty_ToHardware" FromRole="Hardware" ToRole="Histoty" />
+          <NavigationProperty Name="MainGroup" Relationship="Self.FK_MainGroup_ToHardware" FromRole="Hardware" ToRole="MainGroup" />
+          <NavigationProperty Name="OtherHardwares" Relationship="Self.FK_OtherHardwares_ToHardware" FromRole="Hardware" ToRole="OtherHardwares" />
+          <NavigationProperty Name="Printers" Relationship="Self.FK_Printers_ToHardware" FromRole="Hardware" ToRole="Printers" />
         </EntityType>
         <EntityType Name="Histoty">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsEnterUsing" Type="Boolean" Nullable="false" />
           <Property Name="CabinetId" Type="Int32" Nullable="false" />
           <Property Name="HardwareId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cabinets" Relationship="DatabaseModel.FK_Histoty_ToCabinet" FromRole="Histoty" ToRole="Cabinets" />
-          <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Histoty_ToHardware" FromRole="Histoty" ToRole="Hardware" />
+          <NavigationProperty Name="Cabinets" Relationship="Self.FK_Histoty_ToCabinet" FromRole="Histoty" ToRole="Cabinets" />
+          <NavigationProperty Name="Hardware" Relationship="Self.FK_Histoty_ToHardware" FromRole="Histoty" ToRole="Hardware" />
         </EntityType>
         <EntityType Name="MainGroup">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ModelProcessor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModelProcessor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RAM" Type="Int32" Nullable="false" />
-          <Property Name="DiskSize" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_MainGroup_ToHardware" FromRole="MainGroup" ToRole="Hardware" />
+          <Property Name="DiskSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Hardware" Relationship="Self.FK_MainGroup_ToHardware" FromRole="MainGroup" ToRole="Hardware" />
         </EntityType>
         <EntityType Name="OtherHardwares">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_OtherHardwares_ToHardware" FromRole="OtherHardwares" ToRole="Hardware" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Hardware" Relationship="Self.FK_OtherHardwares_ToHardware" FromRole="OtherHardwares" ToRole="Hardware" />
         </EntityType>
         <EntityType Name="Printers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TypeCartridge" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeCartridge" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HavePrintDoubleList" Type="Boolean" Nullable="false" />
           <Property Name="IsMFY" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Printers_ToHardware" FromRole="Printers" ToRole="Hardware" />
+          <NavigationProperty Name="Hardware" Relationship="Self.FK_Printers_ToHardware" FromRole="Printers" ToRole="Hardware" />
         </EntityType>
         <EntityType Name="Workers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Cabinets" Relationship="DatabaseModel.ResponsiblePersons" FromRole="Workers" ToRole="Cabinets" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cabinets" Relationship="Self.ResponsiblePersons" FromRole="Workers" ToRole="Cabinets" />
         </EntityType>
         <EntityType Name="Сonsumables">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Interface" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Interface" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Consumables_ToHardware" FromRole="Сonsumables" ToRole="Hardware" />
+          <NavigationProperty Name="Hardware" Relationship="Self.FK_Consumables_ToHardware" FromRole="Сonsumables" ToRole="Hardware" />
         </EntityType>
         <Association Name="FK_Histoty_ToCabinet">
-          <End Type="DatabaseModel.Cabinets" Role="Cabinets" Multiplicity="1" />
-          <End Type="DatabaseModel.Histoty" Role="Histoty" Multiplicity="*" />
+          <End Role="Cabinets" Type="Self.Cabinets" Multiplicity="1" />
+          <End Role="Histoty" Type="Self.Histoty" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cabinets">
               <PropertyRef Name="Id" />
@@ -367,8 +326,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Consumables_ToHardware">
-          <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
-          <End Type="DatabaseModel.Сonsumables" Role="Сonsumables" Multiplicity="0..1" />
+          <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+          <End Role="Сonsumables" Type="Self.Сonsumables" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Hardware">
               <PropertyRef Name="Id" />
@@ -379,8 +338,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Histoty_ToHardware">
-          <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
-          <End Type="DatabaseModel.Histoty" Role="Histoty" Multiplicity="*" />
+          <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+          <End Role="Histoty" Type="Self.Histoty" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Hardware">
               <PropertyRef Name="Id" />
@@ -391,8 +350,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MainGroup_ToHardware">
-          <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
-          <End Type="DatabaseModel.MainGroup" Role="MainGroup" Multiplicity="0..1" />
+          <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+          <End Role="MainGroup" Type="Self.MainGroup" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Hardware">
               <PropertyRef Name="Id" />
@@ -403,8 +362,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OtherHardwares_ToHardware">
-          <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
-          <End Type="DatabaseModel.OtherHardwares" Role="OtherHardwares" Multiplicity="0..1" />
+          <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+          <End Role="OtherHardwares" Type="Self.OtherHardwares" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Hardware">
               <PropertyRef Name="Id" />
@@ -415,8 +374,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Printers_ToHardware">
-          <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1" />
-          <End Type="DatabaseModel.Printers" Role="Printers" Multiplicity="0..1" />
+          <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+          <End Role="Printers" Type="Self.Printers" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Hardware">
               <PropertyRef Name="Id" />
@@ -427,10 +386,48 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ResponsiblePersons">
-          <End Type="DatabaseModel.Workers" Role="Workers" Multiplicity="*" />
-          <End Type="DatabaseModel.Cabinets" Role="Cabinets" Multiplicity="*" />
+          <End Role="Cabinets" Type="Self.Cabinets" Multiplicity="*" />
+          <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
         </Association>
-        </Schema>
+        <EntityContainer Name="ConnectionDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cabinets" EntityType="Self.Cabinets" />
+          <EntitySet Name="Hardware" EntityType="Self.Hardware" />
+          <EntitySet Name="Histoty" EntityType="Self.Histoty" />
+          <EntitySet Name="MainGroup" EntityType="Self.MainGroup" />
+          <EntitySet Name="OtherHardwares" EntityType="Self.OtherHardwares" />
+          <EntitySet Name="Printers" EntityType="Self.Printers" />
+          <EntitySet Name="Workers" EntityType="Self.Workers" />
+          <EntitySet Name="Сonsumables" EntityType="Self.Сonsumables" />
+          <AssociationSet Name="FK_Histoty_ToCabinet" Association="Self.FK_Histoty_ToCabinet">
+            <End Role="Cabinets" EntitySet="Cabinets" />
+            <End Role="Histoty" EntitySet="Histoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consumables_ToHardware" Association="Self.FK_Consumables_ToHardware">
+            <End Role="Hardware" EntitySet="Hardware" />
+            <End Role="Сonsumables" EntitySet="Сonsumables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Histoty_ToHardware" Association="Self.FK_Histoty_ToHardware">
+            <End Role="Hardware" EntitySet="Hardware" />
+            <End Role="Histoty" EntitySet="Histoty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainGroup_ToHardware" Association="Self.FK_MainGroup_ToHardware">
+            <End Role="Hardware" EntitySet="Hardware" />
+            <End Role="MainGroup" EntitySet="MainGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherHardwares_ToHardware" Association="Self.FK_OtherHardwares_ToHardware">
+            <End Role="Hardware" EntitySet="Hardware" />
+            <End Role="OtherHardwares" EntitySet="OtherHardwares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Printers_ToHardware" Association="Self.FK_Printers_ToHardware">
+            <End Role="Hardware" EntitySet="Hardware" />
+            <End Role="Printers" EntitySet="Printers" />
+          </AssociationSet>
+          <AssociationSet Name="ResponsiblePersons" Association="Self.ResponsiblePersons">
+            <End Role="Cabinets" EntitySet="Cabinets" />
+            <End Role="Workers" EntitySet="Workers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -439,88 +436,88 @@
           <EntitySetMapping Name="Cabinets">
             <EntityTypeMapping TypeName="DatabaseModel.Cabinets">
               <MappingFragment StoreEntitySet="Cabinets">
-                <ScalarProperty Name="Floor" ColumnName="Floor" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Hardware">
             <EntityTypeMapping TypeName="DatabaseModel.Hardware">
               <MappingFragment StoreEntitySet="Hardware">
-                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Histoty">
             <EntityTypeMapping TypeName="DatabaseModel.Histoty">
               <MappingFragment StoreEntitySet="Histoty">
-                <ScalarProperty Name="HardwareId" ColumnName="HardwareId" />
-                <ScalarProperty Name="CabinetId" ColumnName="CabinetId" />
-                <ScalarProperty Name="IsEnterUsing" ColumnName="IsEnterUsing" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsEnterUsing" ColumnName="IsEnterUsing" />
+                <ScalarProperty Name="CabinetId" ColumnName="CabinetId" />
+                <ScalarProperty Name="HardwareId" ColumnName="HardwareId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MainGroup">
             <EntityTypeMapping TypeName="DatabaseModel.MainGroup">
               <MappingFragment StoreEntitySet="MainGroup">
-                <ScalarProperty Name="DiskSize" ColumnName="DiskSize" />
-                <ScalarProperty Name="RAM" ColumnName="RAM" />
-                <ScalarProperty Name="ModelProcessor" ColumnName="ModelProcessor" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModelProcessor" ColumnName="ModelProcessor" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="DiskSize" ColumnName="DiskSize" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OtherHardwares">
             <EntityTypeMapping TypeName="DatabaseModel.OtherHardwares">
               <MappingFragment StoreEntitySet="OtherHardwares">
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Printers">
             <EntityTypeMapping TypeName="DatabaseModel.Printers">
               <MappingFragment StoreEntitySet="Printers">
-                <ScalarProperty Name="IsMFY" ColumnName="IsMFY" />
-                <ScalarProperty Name="HavePrintDoubleList" ColumnName="HavePrintDoubleList" />
-                <ScalarProperty Name="TypeCartridge" ColumnName="TypeCartridge" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="TypeCartridge" ColumnName="TypeCartridge" />
+                <ScalarProperty Name="HavePrintDoubleList" ColumnName="HavePrintDoubleList" />
+                <ScalarProperty Name="IsMFY" ColumnName="IsMFY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Workers">
             <EntityTypeMapping TypeName="DatabaseModel.Workers">
               <MappingFragment StoreEntitySet="Workers">
-                <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Сonsumables">
             <EntityTypeMapping TypeName="DatabaseModel.Сonsumables">
               <MappingFragment StoreEntitySet="Сonsumables">
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Interface" ColumnName="Interface" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Interface" ColumnName="Interface" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="ResponsiblePersons" TypeName="DatabaseModel.ResponsiblePersons" StoreEntitySet="ResponsiblePersons">
             <EndProperty Name="Cabinets">
-              <ScalarProperty Name="Id" ColumnName="CabinetId" />
+              <ScalarProperty Name="Id" ColumnName="Cabinets_Id" />
             </EndProperty>
             <EndProperty Name="Workers">
-              <ScalarProperty Name="Id" ColumnName="WorkerId" />
+              <ScalarProperty Name="Id" ColumnName="Workers_Id" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

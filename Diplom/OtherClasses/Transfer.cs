@@ -34,7 +34,7 @@ namespace Diplom.OtherClasses
                 }
                 case "История учета":
                 {
-                    MessageBox.Show("Еще пока нет команды");
+                    frame.Navigate(new HistoryPage());
                     break;
                 }
                 case "Оборудование":
@@ -47,6 +47,27 @@ namespace Diplom.OtherClasses
                     frame.Navigate(new AddCabinetPage());
                     break;
                 }
+                case "Добавление записи":
+                {
+                    frame.Navigate(new AddHistoryPage());
+                    break;
+                }
+                case "Основная группа":
+                    {
+                        frame.Navigate(new MainGroupPage());
+                        break;
+                    }
+                case "Добавление пк":
+                    {
+                        frame.Navigate(new AddMainGroupPage());
+                        break;
+                    }
+
+                default:
+                    {
+                        MessageBox.Show("not fount");
+                        break;
+                    }
             }
         }
     }

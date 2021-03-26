@@ -21,7 +21,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="IsEnterUsing" Type="bit" Nullable="false" />
     <Property Name="CabinetId" Type="int" Nullable="false" />
     <Property Name="HardwareId" Type="int" Nullable="false" />
@@ -54,11 +54,11 @@
   </EntityType>
   <EntityType Name="ResponsiblePersons">
     <Key>
-      <PropertyRef Name="CabinetId" />
-      <PropertyRef Name="WorkerId" />
+      <PropertyRef Name="Workers_Id" />
+      <PropertyRef Name="Cabinets_Id" />
     </Key>
-    <Property Name="CabinetId" Type="int" Nullable="false" />
-    <Property Name="WorkerId" Type="int" Nullable="false" />
+    <Property Name="Workers_Id" Type="int" Nullable="false" />
+    <Property Name="Cabinets_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Workers">
     <Key>
@@ -151,31 +151,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ResponsiblePersons_ToCabinets">
-    <End Role="Workers" Type="Self.Workers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="ResponsiblePersons" Type="Self.ResponsiblePersons" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Workers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ResponsiblePersons">
-        <PropertyRef Name="WorkerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ResponsiblePersons_ToWorkers">
-    <End Role="Cabinets" Type="Self.Cabinets" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+  <Association Name="FK_ResponsiblePersons_Cabinets">
+    <End Role="Cabinets" Type="Self.Cabinets" Multiplicity="1" />
     <End Role="ResponsiblePersons" Type="Self.ResponsiblePersons" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cabinets">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ResponsiblePersons">
-        <PropertyRef Name="CabinetId" />
+        <PropertyRef Name="Cabinets_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResponsiblePersons_Workers">
+    <End Role="Workers" Type="Self.Workers" Multiplicity="1" />
+    <End Role="ResponsiblePersons" Type="Self.ResponsiblePersons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResponsiblePersons">
+        <PropertyRef Name="Workers_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -213,12 +209,12 @@
       <End Role="Hardware" EntitySet="Hardware" />
       <End Role="Printers" EntitySet="Printers" />
     </AssociationSet>
-    <AssociationSet Name="FK_ResponsiblePersons_ToCabinets" Association="Self.FK_ResponsiblePersons_ToCabinets">
-      <End Role="Workers" EntitySet="Workers" />
+    <AssociationSet Name="FK_ResponsiblePersons_Cabinets" Association="Self.FK_ResponsiblePersons_Cabinets">
+      <End Role="Cabinets" EntitySet="Cabinets" />
       <End Role="ResponsiblePersons" EntitySet="ResponsiblePersons" />
     </AssociationSet>
-    <AssociationSet Name="FK_ResponsiblePersons_ToWorkers" Association="Self.FK_ResponsiblePersons_ToWorkers">
-      <End Role="Cabinets" EntitySet="Cabinets" />
+    <AssociationSet Name="FK_ResponsiblePersons_Workers" Association="Self.FK_ResponsiblePersons_Workers">
+      <End Role="Workers" EntitySet="Workers" />
       <End Role="ResponsiblePersons" EntitySet="ResponsiblePersons" />
     </AssociationSet>
   </EntityContainer>

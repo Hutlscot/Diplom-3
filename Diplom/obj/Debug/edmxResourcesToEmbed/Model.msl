@@ -4,88 +4,88 @@
     <EntitySetMapping Name="Cabinets">
       <EntityTypeMapping TypeName="DatabaseModel.Cabinets">
         <MappingFragment StoreEntitySet="Cabinets">
-          <ScalarProperty Name="Floor" ColumnName="Floor" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Hardware">
       <EntityTypeMapping TypeName="DatabaseModel.Hardware">
         <MappingFragment StoreEntitySet="Hardware">
-          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Histoty">
       <EntityTypeMapping TypeName="DatabaseModel.Histoty">
         <MappingFragment StoreEntitySet="Histoty">
-          <ScalarProperty Name="HardwareId" ColumnName="HardwareId" />
-          <ScalarProperty Name="CabinetId" ColumnName="CabinetId" />
-          <ScalarProperty Name="IsEnterUsing" ColumnName="IsEnterUsing" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="IsEnterUsing" ColumnName="IsEnterUsing" />
+          <ScalarProperty Name="CabinetId" ColumnName="CabinetId" />
+          <ScalarProperty Name="HardwareId" ColumnName="HardwareId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MainGroup">
       <EntityTypeMapping TypeName="DatabaseModel.MainGroup">
         <MappingFragment StoreEntitySet="MainGroup">
-          <ScalarProperty Name="DiskSize" ColumnName="DiskSize" />
-          <ScalarProperty Name="RAM" ColumnName="RAM" />
-          <ScalarProperty Name="ModelProcessor" ColumnName="ModelProcessor" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModelProcessor" ColumnName="ModelProcessor" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="DiskSize" ColumnName="DiskSize" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OtherHardwares">
       <EntityTypeMapping TypeName="DatabaseModel.OtherHardwares">
         <MappingFragment StoreEntitySet="OtherHardwares">
-          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Printers">
       <EntityTypeMapping TypeName="DatabaseModel.Printers">
         <MappingFragment StoreEntitySet="Printers">
-          <ScalarProperty Name="IsMFY" ColumnName="IsMFY" />
-          <ScalarProperty Name="HavePrintDoubleList" ColumnName="HavePrintDoubleList" />
-          <ScalarProperty Name="TypeCartridge" ColumnName="TypeCartridge" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="TypeCartridge" ColumnName="TypeCartridge" />
+          <ScalarProperty Name="HavePrintDoubleList" ColumnName="HavePrintDoubleList" />
+          <ScalarProperty Name="IsMFY" ColumnName="IsMFY" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Workers">
       <EntityTypeMapping TypeName="DatabaseModel.Workers">
         <MappingFragment StoreEntitySet="Workers">
-          <ScalarProperty Name="Position" ColumnName="Position" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Сonsumables">
       <EntityTypeMapping TypeName="DatabaseModel.Сonsumables">
         <MappingFragment StoreEntitySet="Сonsumables">
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="Interface" ColumnName="Interface" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Interface" ColumnName="Interface" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="ResponsiblePersons" TypeName="DatabaseModel.ResponsiblePersons" StoreEntitySet="ResponsiblePersons">
       <EndProperty Name="Cabinets">
-        <ScalarProperty Name="Id" ColumnName="CabinetId" />
+        <ScalarProperty Name="Id" ColumnName="Cabinets_Id" />
       </EndProperty>
       <EndProperty Name="Workers">
-        <ScalarProperty Name="Id" ColumnName="WorkerId" />
+        <ScalarProperty Name="Id" ColumnName="Workers_Id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

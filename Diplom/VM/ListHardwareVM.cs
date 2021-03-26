@@ -7,12 +7,12 @@ namespace Diplom.VM
 {
     public class ListHardwareVM
     {
-        public ObservableCollection<Hardware> ListHardwares { get; set; }
+        public List<Hardware> ListHardwares { get; set; }
 
         public ListHardwareVM()
         {
             var conn = new ConnectionDB();
-            //ListHardwares = conn.Hardware;
+            ListHardwares = conn.Hardware.ToList();
         }
     }
 }

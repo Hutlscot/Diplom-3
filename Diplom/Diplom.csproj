@@ -91,13 +91,24 @@
     <Compile Include="MainGroup.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Model\PartialCabinets.cs" />
     <Compile Include="Model\PartialHardware.cs" />
+    <Compile Include="Model\PartialHistory.cs" />
     <Compile Include="Model\PartialWorkers.cs" />
     <Compile Include="OtherClasses\Transfer.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
@@ -110,11 +121,17 @@
     <Compile Include="View\AddCabinetPage.xaml.cs">
       <DependentUpon>AddCabinetPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AddHardwareWindow.xaml.cs">
-      <DependentUpon>AddHardwareWindow.xaml</DependentUpon>
+    <Compile Include="View\AddHistory.xaml.cs">
+      <DependentUpon>AddHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddMainGroupPage.xaml.cs">
+      <DependentUpon>AddMainGroupPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AddWorkerPage.xaml.cs">
       <DependentUpon>AddWorkerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HistoryPage.xaml.cs">
+      <DependentUpon>HistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ListCabitensPage.xaml.cs">
       <DependentUpon>ListCabitensPage.xaml</DependentUpon>
@@ -125,11 +142,17 @@
     <Compile Include="View\ListWorkersPage.xaml.cs">
       <DependentUpon>ListWorkersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MainGroupPage.xaml.cs">
+      <DependentUpon>MainGroupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VM\AddCabinetVM.cs" />
+    <Compile Include="VM\AddMainGroupVM.cs" />
     <Compile Include="VM\AddWorkerVM.cs" />
+    <Compile Include="VM\HistoryVM.cs" />
     <Compile Include="VM\ListCabinetsVM.cs" />
     <Compile Include="VM\ListHardwareVM.cs" />
     <Compile Include="VM\ListWorkersVM.cs" />
+    <Compile Include="VM\MainGroupVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
     <Compile Include="Workers.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -141,11 +164,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AddHardwareWindow.xaml">
+    <Page Include="View\AddHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddMainGroupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddWorkerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ListWorkersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainGroupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,16 +210,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -228,14 +253,16 @@
     </Content>
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Model.edmx.sql" />
     <Content Include="Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Model1.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

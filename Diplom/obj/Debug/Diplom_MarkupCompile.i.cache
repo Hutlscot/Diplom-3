@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Diplom\Diplom\App.xaml
-71860841765
-41432446814
-34-744954055
+101776904428
+6996490893
+41-1608435875
 18-1733640825
-View\AddCabinetPage.xaml;View\AddHardwareWindow.xaml;View\AddWorkerPage.xaml;View\ListCabitensPage.xaml;View\ListHardwarePage.xaml;View\ListWorkersPage.xaml;View\MainWindow.xaml;
+View\AddCabinetPage.xaml;View\AddHistory.xaml;View\AddMainGroupPage.xaml;View\AddWorkerPage.xaml;View\HistoryPage.xaml;View\ListCabitensPage.xaml;View\ListHardwarePage.xaml;View\ListWorkersPage.xaml;View\MainGroupPage.xaml;View\MainWindow.xaml;
 
-True
+False
 

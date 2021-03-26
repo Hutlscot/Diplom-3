@@ -11,6 +11,8 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database.mdf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model.edmx.sql")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.edmx.sql")]
 
 

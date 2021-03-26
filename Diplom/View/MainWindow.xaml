@@ -25,15 +25,12 @@
         <TextBlock Grid.Column="1" Style="{StaticResource TextCenter}" Text="Меню">
 
         </TextBlock>
-        
+
         <!--контент меню-->
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
             <Button Style="{StaticResource DefaultButton}" 
                     Command="{Binding CommandGoTo}"
                     CommandParameter="История учета" Content="История учета"></Button>
-            <Button Style="{StaticResource DefaultButton}"  
-                    Command="{Binding CommandGoTo}"
-                    CommandParameter="Оборудование" Content="Оборудование"></Button>
             <Button Style="{StaticResource DefaultButton}"  
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Кабинеты" Content="Кабинеты"></Button>
@@ -42,7 +39,10 @@
                     CommandParameter="Сотрудники" Content="Сотрудники"></Button>
             <Button Style="{StaticResource DefaultButton}"  
                     Command="{Binding CommandGoTo}"
-                    CommandParameter="Добавление сотрудника" Content="Добавление сотрудника"></Button>
+                    CommandParameter="Оборудование" Content="Оборудование"/>
+            <Button Style="{StaticResource DefaultButton}"  
+                    Command="{Binding CommandGoTo}"
+                    CommandParameter="Основная группа" Content="Основная группа (ПК)"></Button>
         </StackPanel>
 
         <!--заголовок-->
