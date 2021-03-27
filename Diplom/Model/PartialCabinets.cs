@@ -12,5 +12,12 @@ namespace Diplom
                 return person != null ? person.Fio : "Нет ответственного";
             }
         }
+        public string Description
+        {
+            get
+            {
+                return $"Корпус: {Corpus}, Этаж: {Floor}, №{Number}";
+            }
+        }
     }
 }

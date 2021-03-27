@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Dip\Diplom\App.xaml
-161447240007
+17336683773
 41432446814
-541156066302
+57-630162107
 18-1682186690
-View\AddCabinetPage.xaml;View\AddConsumablePage.xaml;View\AddHistory.xaml;View\AddMainGroupPage.xaml;View\AddOtherhardwarePage.xaml;View\AddPrinterPage.xaml;View\AddWorkerPage.xaml;View\ConsumablesPage.xaml;View\HistoryPage.xaml;View\ListCabitensPage.xaml;View\ListHardwarePage.xaml;View\ListWorkersPage.xaml;View\MainGroupPage.xaml;View\MainWindow.xaml;View\OtherHardwaresPage.xaml;View\PrintersPage.xaml;
+View\AddCabinetPage.xaml;View\AddConsumablePage.xaml;View\AddHistory.xaml;View\AddMainGroupPage.xaml;View\AddOtherhardwarePage.xaml;View\AddPrinterPage.xaml;View\AddWorkerPage.xaml;View\Authorization.xaml;View\ConsumablesPage.xaml;View\HistoryPage.xaml;View\ListCabitensPage.xaml;View\ListHardwarePage.xaml;View\ListWorkersPage.xaml;View\MainGroupPage.xaml;View\MainWindow.xaml;View\OtherHardwaresPage.xaml;View\PrintersPage.xaml;
 
 True
 

@@ -33,12 +33,12 @@ namespace Diplom.VM
             }
         }
 
-        private RelayCommand delHistoryCommand;
-        public RelayCommand DelHistoryCommand
+        private RelayCommand delCommand;
+        public RelayCommand DelCommand
         {
             get
             {
-                return delHistoryCommand ?? (new RelayCommand(
+                return delCommand ?? (new RelayCommand(
                     obj =>
                     {
                         try

@@ -20,9 +20,19 @@ namespace Diplom.View
     /// </summary>
     public partial class HistoryPage : Page
     {
+        private List<Histoty> sortedHistoty { get; set; }
+
         public HistoryPage()
         {
             InitializeComponent();
+            var conn = new ConnectionDB();
+            sortedHistoty = conn.Histoty.ToList();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var text = (sender as TextBox).Text;
+            grid.ItemsSource = sortedHistoty.Where(x => x.Hardware.SerialNumber.Contains(text)).ToList();
         }
     }
 }

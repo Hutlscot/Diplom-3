@@ -98,3 +98,5 @@ D:\Dip\Diplom\obj\Debug\View\OtherHardwaresPage.g.cs
 D:\Dip\Diplom\obj\Debug\View\OtherHardwaresPage.baml
 D:\Dip\Diplom\obj\Debug\View\AddOtherhardwarePage.g.cs
 D:\Dip\Diplom\obj\Debug\View\AddOtherhardwarePage.baml
+D:\Dip\Diplom\obj\Debug\View\Authorization.g.cs
+D:\Dip\Diplom\obj\Debug\View\Authorization.baml

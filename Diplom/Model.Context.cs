@@ -33,5 +33,6 @@ namespace Diplom
         public virtual DbSet<OtherHardwares> OtherHardwares { get; set; }
         public virtual DbSet<Printers> Printers { get; set; }
         public virtual DbSet<Workers> Workers { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

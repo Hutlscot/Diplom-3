@@ -33,13 +33,13 @@
                     CommandParameter="История учета" Content="История учета"></Button>
             <Button Style="{StaticResource DefaultButton}"  
                     Command="{Binding CommandGoTo}"
+                    CommandParameter="Оборудование" Content="Оборудование"/>
+            <Button Style="{StaticResource DefaultButton}"  
+                    Command="{Binding CommandGoTo}"
                     CommandParameter="Кабинеты" Content="Кабинеты"></Button>
             <Button Style="{StaticResource DefaultButton}"  
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Сотрудники" Content="Сотрудники"></Button>
-            <Button Style="{StaticResource DefaultButton}"  
-                    Command="{Binding CommandGoTo}"
-                    CommandParameter="Оборудование" Content="Оборудование"/>
             <Button Style="{StaticResource DefaultButton}"  
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Основная группа" Content="Основная группа (ПК)"></Button>

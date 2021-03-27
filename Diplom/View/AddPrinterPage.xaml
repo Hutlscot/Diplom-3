@@ -18,16 +18,16 @@
             <TextBlock Margin="5">Серийный номер:</TextBlock>
             <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedHardware.SerialNumber}"></TextBox>
             <TextBlock Margin="5">Модель:</TextBlock>
-            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedPrinter.Model}"></TextBox>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedItem.Model}"></TextBox>
             <TextBlock Margin="5">Тип картриджа:</TextBlock>
-            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedPrinter.TypeCartridge}"></TextBox>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedItem.TypeCartridge}"></TextBox>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="5">Двустороняя печать</TextBlock>
-            <CheckBox Margin="10" IsChecked="{Binding addedPrinter.HavePrintDoubleList}"></CheckBox>
+                <CheckBox Margin="10" IsChecked="{Binding addedItem.HavePrintDoubleList}"></CheckBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="5">МФУ</TextBlock>
-                <CheckBox Margin="10" IsChecked="{Binding addedPrinter.IsMFY}"></CheckBox>
+                <CheckBox Margin="10" IsChecked="{Binding addedItem.IsMFY}"></CheckBox>
             </StackPanel>
             <Button Style="{StaticResource DefaultButton}" Command="{Binding AddCommand}">Добавить</Button>
         </StackPanel>

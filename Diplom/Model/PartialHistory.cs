@@ -17,5 +17,12 @@ namespace Diplom
                 return "Вывод";
             }
         }
+        public string DateShort
+        {
+            get
+            {
+                return Date.ToShortDateString();
+            }
+        }
     }
 }

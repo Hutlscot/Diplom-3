@@ -32,5 +32,13 @@ namespace Diplom
                 return "Неизвестная группа";
             }
         }
+
+        public string NameAndSerialNumber
+        {
+            get
+            {
+                return $"{Name} {SerialNumber}";
+            }
+        }
     }
 }

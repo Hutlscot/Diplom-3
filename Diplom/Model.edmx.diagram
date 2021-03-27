@@ -20,6 +20,7 @@
         <AssociationConnector Association="DatabaseModel.FK_OtherHardwares_ToHardware" />
         <AssociationConnector Association="DatabaseModel.FK_Printers_ToHardware" />
         <AssociationConnector Association="DatabaseModel.ResponsiblePersons" />
+        <EntityTypeShape EntityType="DatabaseModel.Users" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

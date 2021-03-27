@@ -10,12 +10,12 @@ namespace Diplom.VM
 {
     class AddPrinterVM
     {
-        public Printers addedPrinter { get; set; }
+        public Printers addedItem { get; set; }
         public Hardware addedHardware { get; set; }
         public AddPrinterVM()
         {
             addedHardware = new Hardware();
-            addedPrinter = new Printers();
+            addedItem = new Printers();
         }
 
         private RelayCommand addCommand;
@@ -30,8 +30,8 @@ namespace Diplom.VM
                         var conn = new ConnectionDB();
                         conn.Hardware.Add(addedHardware);
                         conn.SaveChanges();
-                        addedPrinter.Hardware = addedHardware;
-                        conn.Printers.Add(addedPrinter);
+                        addedItem.Hardware = addedHardware;
+                        conn.Printers.Add(addedItem);
                         conn.SaveChanges();
                         MessageBox.Show("Успешно сохранено");
                         Transfer.GoTo("Принтеры");

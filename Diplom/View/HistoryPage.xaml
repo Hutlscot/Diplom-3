@@ -21,17 +21,21 @@
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название техники" Binding="{Binding Hardware.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Серийный номер" Binding="{Binding Hardware.SerialNumber}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата" Binding="{Binding Date}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding DateShort}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Статус эксплуатации" Binding="{Binding isEntUsing}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1">
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Left" 
+            <StackPanel Margin="10" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock>Поиск по серийному номеру:</TextBlock>
+                <TextBox Width="250" TextChanged="TextBox_TextChanged"></TextBox>
+            </StackPanel>
+            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" 
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Добавление записи" Content="Добавление записи"></Button>
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" Visibility="Hidden">Изменить сотрудника</Button>
+            <!--<Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" Visibility="Hidden">Изменить сотрудника</Button>-->
             <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Right" 
-                    Command="{Binding DelHistoryCommand}">Удалить запись</Button>
+                    Command="{Binding DelCommand}">Удалить запись</Button>
         </Grid>
     </Grid>
 </Page>

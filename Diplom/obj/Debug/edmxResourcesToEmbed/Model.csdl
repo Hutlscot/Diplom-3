@@ -37,6 +37,7 @@
       <End Role="Cabinets" EntitySet="Cabinets" />
       <End Role="Workers" EntitySet="Workers" />
     </AssociationSet>
+    <EntitySet Name="Users" EntityType="DatabaseModel.Users" />
   </EntityContainer>
   <EntityType Name="Cabinets">
     <Key>
@@ -209,4 +210,12 @@
     <End Type="DatabaseModel.Cabinets" Role="Cabinets" Multiplicity="*" />
     <End Type="DatabaseModel.Workers" Role="Workers" Multiplicity="*" />
   </Association>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>
