@@ -109,6 +109,7 @@
     <Compile Include="Model\PartialCabinets.cs" />
     <Compile Include="Model\PartialHardware.cs" />
     <Compile Include="Model\PartialHistory.cs" />
+    <Compile Include="Model\PartialPrinters.cs" />
     <Compile Include="Model\PartialWorkers.cs" />
     <Compile Include="OtherClasses\Transfer.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
@@ -126,6 +127,9 @@
     </Compile>
     <Compile Include="View\AddMainGroupPage.xaml.cs">
       <DependentUpon>AddMainGroupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddPrinterPage.xaml.cs">
+      <DependentUpon>AddPrinterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AddWorkerPage.xaml.cs">
       <DependentUpon>AddWorkerPage.xaml</DependentUpon>
@@ -145,8 +149,12 @@
     <Compile Include="View\MainGroupPage.xaml.cs">
       <DependentUpon>MainGroupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PrintersPage.xaml.cs">
+      <DependentUpon>PrintersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VM\AddCabinetVM.cs" />
     <Compile Include="VM\AddMainGroupVM.cs" />
+    <Compile Include="VM\AddPrinterVM.cs" />
     <Compile Include="VM\AddWorkerVM.cs" />
     <Compile Include="VM\HistoryVM.cs" />
     <Compile Include="VM\ListCabinetsVM.cs" />
@@ -154,6 +162,7 @@
     <Compile Include="VM\ListWorkersVM.cs" />
     <Compile Include="VM\MainGroupVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
+    <Compile Include="VM\PrintersVM.cs" />
     <Compile Include="Workers.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -169,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddMainGroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddPrinterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,6 +221,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\PrintersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -256,13 +273,11 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model.edmx.sql" />
     <Content Include="Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <Content Include="Model1.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

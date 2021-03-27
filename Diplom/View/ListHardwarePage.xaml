@@ -16,7 +16,8 @@
             <RowDefinition Height="5*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <DataGrid Name="grid" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" ItemsSource="{Binding ListHardwares}">
+        <DataGrid Name="grid" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" ItemsSource="{Binding ListHardwares}"
+                  SelectedItem="{Binding selectedHardware}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
@@ -25,9 +26,10 @@
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1">
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Left">Добавить оборуд.</Button>
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center">Изменить оборуд.</Button>
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Right">Удалить оборуд.</Button>
+            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Left">Поиск</Button>
+            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" Visibility="Hidden">Изменить оборуд</Button>
+            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Right"
+                    Command="{Binding DelCommand}">Удалить оборуд.</Button>
         </Grid>
     </Grid>
 </Page>

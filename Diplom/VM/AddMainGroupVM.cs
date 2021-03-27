@@ -30,13 +30,11 @@ namespace Diplom.VM
                     try
                     {
                         var conn = new ConnectionDB();
+                        conn.Hardware.Add(addedHardware);
+                        conn.SaveChanges();
+                        addedMainGroup.Hardware = addedHardware;
                         conn.MainGroup.Add(addedMainGroup);
                         conn.SaveChanges();
-                        //conn.Hardware.Add(addedHardware);
-                        //conn.SaveChanges();
-
-                       
-
                         MessageBox.Show("Успешно сохранено");
                         Transfer.GoTo("Основная группа");
                     }

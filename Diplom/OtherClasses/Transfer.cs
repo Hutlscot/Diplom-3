@@ -62,6 +62,16 @@ namespace Diplom.OtherClasses
                         frame.Navigate(new AddMainGroupPage());
                         break;
                     }
+                case "Принтеры":
+                    {
+                        frame.Navigate(new PrintersPage());
+                        break;
+                    }
+                case "Добавление принтера":
+                    {
+                        frame.Navigate(new AddPrinterPage());
+                        break;
+                    }
 
                 default:
                     {

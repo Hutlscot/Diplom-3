@@ -30,7 +30,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="ModelProcessor" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="RAM" Type="int" Nullable="false" />
     <Property Name="DiskSize" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -39,14 +39,14 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Printers">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="TypeCartridge" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="HavePrintDoubleList" Type="bit" Nullable="false" />
@@ -74,13 +74,15 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Interface" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="Amount" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Consumables_ToHardware">
-    <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+    <End Role="Hardware" Type="Self.Hardware" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Сonsumables" Type="Self.Сonsumables" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Hardware">
@@ -116,7 +118,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_MainGroup_ToHardware">
-    <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+    <End Role="Hardware" Type="Self.Hardware" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="MainGroup" Type="Self.MainGroup" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Hardware">
@@ -128,7 +132,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_OtherHardwares_ToHardware">
-    <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+    <End Role="Hardware" Type="Self.Hardware" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="OtherHardwares" Type="Self.OtherHardwares" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Hardware">
@@ -140,7 +146,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Printers_ToHardware">
-    <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+    <End Role="Hardware" Type="Self.Hardware" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Printers" Type="Self.Printers" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Hardware">

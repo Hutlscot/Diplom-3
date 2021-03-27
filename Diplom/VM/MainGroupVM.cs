@@ -43,6 +43,7 @@ namespace Diplom.VM
                         {
                             var conn = new ConnectionDB();
                             conn.MainGroup.Remove(conn.MainGroup.Find(selectedPk.Id));
+                            conn.Hardware.Remove(conn.Hardware.Find(selectedPk.Hardware.Id));
                             conn.SaveChanges();
                             Transfer.GoTo("Основная группа");
                             MessageBox.Show("Успешно удалено");
