@@ -4,16 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diplom.Model
+namespace Diplom
 {
     partial class Hardware
     {
-        //список атрибутов в стринге
-        public string listAttributes
+        //название группы того, что это за оборудование
+        public string GroupName
         {
             get
             {
-                return "";
+                if (MainGroup != null)
+                {
+                    return "Основная группа";
+                }
+                if (Printers != null)
+                {
+                    return "Принтеры";
+                }
+                if (OtherHardwares != null)
+                {
+                    return "Прочее оборудование";
+                }
+                if (Consumables != null)
+                {
+                    return "Расходники";
+                }
+                return "Неизвестная группа";
             }
         }
     }

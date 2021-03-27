@@ -16,6 +16,8 @@
             <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedCabinets.Number}"></TextBox>
             <TextBlock Margin="5">Этаж:</TextBlock>
             <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedCabinets.Floor}"></TextBox>
+            <TextBlock Margin="5">Корпус:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedCabinets.Corpus}"></TextBox>
             <TextBlock Margin="5">Ответственный:</TextBlock>
             <ComboBox Margin="5" ItemsSource="{Binding listWorkers}" SelectedItem="{Binding selectedWorker}">
                 <ComboBox.ItemTemplate>

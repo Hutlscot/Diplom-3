@@ -82,6 +82,17 @@ namespace Diplom.OtherClasses
                         frame.Navigate(new AddConsumablePage());
                         break;
                     }
+                case "Прочее оборудование":
+                    {
+                        frame.Navigate(new OtherHardwaresPage());
+                        break;
+                    }
+                case "Добавление прочего оборудования":
+                    {
+                        frame.Navigate(new AddOtherhardwarePage());
+                        break;
+                    }
+
 
                 default:
                     {

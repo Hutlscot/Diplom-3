@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Cabinets">
       <EntityTypeMapping TypeName="DatabaseModel.Cabinets">
         <MappingFragment StoreEntitySet="Cabinets">
+          <ScalarProperty Name="Corpus" ColumnName="Corpus" />
           <ScalarProperty Name="Floor" ColumnName="Floor" />
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -53,6 +54,7 @@
     <EntitySetMapping Name="OtherHardwares">
       <EntityTypeMapping TypeName="DatabaseModel.OtherHardwares">
         <MappingFragment StoreEntitySet="OtherHardwares">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

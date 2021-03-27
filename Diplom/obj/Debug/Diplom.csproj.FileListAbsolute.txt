@@ -94,3 +94,7 @@ D:\Dip\Diplom\obj\Debug\View\ConsumablesPage.g.cs
 D:\Dip\Diplom\obj\Debug\View\ConsumablesPage.baml
 D:\Dip\Diplom\obj\Debug\View\AddConsumablePage.g.cs
 D:\Dip\Diplom\obj\Debug\View\AddConsumablePage.baml
+D:\Dip\Diplom\obj\Debug\View\OtherHardwaresPage.g.cs
+D:\Dip\Diplom\obj\Debug\View\OtherHardwaresPage.baml
+D:\Dip\Diplom\obj\Debug\View\AddOtherhardwarePage.g.cs
+D:\Dip\Diplom\obj\Debug\View\AddOtherhardwarePage.baml

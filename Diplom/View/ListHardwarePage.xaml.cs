@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Diplom.VM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace Diplom.View
     /// </summary>
     public partial class ListHardwarePage : Page
     {
+        private List<Hardware> sortedHardware { get; set; }
         public ListHardwarePage()
         {
             InitializeComponent();
+            var conn = new ConnectionDB();
+            sortedHardware = conn.Hardware.ToList();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var text = (sender as TextBox).Text;
+            grid.ItemsSource = sortedHardware.Where(x => x.SerialNumber.Contains(text)).ToList();
         }
     }
 }

@@ -12,6 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Number" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Floor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Corpus" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Consumables">
           <Key>
@@ -55,6 +56,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Printers">
           <Key>
@@ -280,6 +282,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Number" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Floor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Corpus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Histoty" Relationship="DatabaseModel.FK_Histoty_ToCabinet" FromRole="Cabinets" ToRole="Histoty" />
           <NavigationProperty Name="Workers" Relationship="DatabaseModel.ResponsiblePersons" FromRole="Cabinets" ToRole="Workers" />
         </EntityType>
@@ -334,6 +337,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_OtherHardwares_ToHardware" FromRole="OtherHardwares" ToRole="Hardware" />
         </EntityType>
         <EntityType Name="Printers">
@@ -451,6 +455,7 @@
           <EntitySetMapping Name="Cabinets">
             <EntityTypeMapping TypeName="DatabaseModel.Cabinets">
               <MappingFragment StoreEntitySet="Cabinets">
+                <ScalarProperty Name="Corpus" ColumnName="Corpus" />
                 <ScalarProperty Name="Floor" ColumnName="Floor" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -500,6 +505,7 @@
           <EntitySetMapping Name="OtherHardwares">
             <EntityTypeMapping TypeName="DatabaseModel.OtherHardwares">
               <MappingFragment StoreEntitySet="OtherHardwares">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1928f7e0f95b4b64a89e84d3e6ed7edc" Name="Diagram1" ZoomLevel="154">
+      <Diagram DiagramId="1928f7e0f95b4b64a89e84d3e6ed7edc" Name="Diagram1" ZoomLevel="115">
         <EntityTypeShape EntityType="DatabaseModel.Cabinets" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DatabaseModel.Consumables" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="DatabaseModel.Consumables" Width="1.5" PointX="3" PointY="9.625" />
         <EntityTypeShape EntityType="DatabaseModel.Hardware" Width="1.5" PointX="0.75" PointY="7.5" />
-        <EntityTypeShape EntityType="DatabaseModel.Histoty" Width="1.5" PointX="6" PointY="7.5" />
-        <EntityTypeShape EntityType="DatabaseModel.MainGroup" Width="1.5" PointX="3" PointY="6.5" />
+        <EntityTypeShape EntityType="DatabaseModel.Histoty" Width="1.5" PointX="6" PointY="7.625" />
+        <EntityTypeShape EntityType="DatabaseModel.MainGroup" Width="1.5" PointX="3" PointY="3.75" />
         <EntityTypeShape EntityType="DatabaseModel.OtherHardwares" Width="1.5" PointX="3" PointY="15.25" />
         <EntityTypeShape EntityType="DatabaseModel.Printers" Width="1.5" PointX="3" PointY="12.375" />
-        <EntityTypeShape EntityType="DatabaseModel.Workers" Width="1.5" PointX="6" PointY="3.625" />
+        <EntityTypeShape EntityType="DatabaseModel.Workers" Width="1.5" PointX="6" PointY="3.75" />
         <AssociationConnector Association="DatabaseModel.FK_Histoty_ToCabinet" />
         <AssociationConnector Association="DatabaseModel.FK_Consum_ToHardware" />
         <AssociationConnector Association="DatabaseModel.FK_Histoty_ToHardware" />

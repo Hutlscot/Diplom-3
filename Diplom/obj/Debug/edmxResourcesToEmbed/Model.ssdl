@@ -7,6 +7,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Number" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="Floor" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Corpus" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Consumables">
     <Key>
@@ -50,6 +51,7 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Printers">
     <Key>

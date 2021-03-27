@@ -33,7 +33,7 @@ namespace Diplom.VM
                             var conn = new ConnectionDB();
                             conn.Hardware.Remove(conn.Hardware.Find(selectedHardware.Id));
                             conn.SaveChanges();
-                            Transfer.GoTo("Основная группа");
+                            Transfer.GoTo("Оборудование");
                             MessageBox.Show("Успешно удалено");
                         }
                         catch (Exception e)

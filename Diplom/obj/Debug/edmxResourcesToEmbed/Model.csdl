@@ -45,6 +45,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Number" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Floor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Corpus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Histoty" Relationship="DatabaseModel.FK_Histoty_ToCabinet" FromRole="Cabinets" ToRole="Histoty" />
     <NavigationProperty Name="Workers" Relationship="DatabaseModel.ResponsiblePersons" FromRole="Cabinets" ToRole="Workers" />
   </EntityType>
@@ -99,6 +100,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_OtherHardwares_ToHardware" FromRole="OtherHardwares" ToRole="Hardware" />
   </EntityType>
   <EntityType Name="Printers">

@@ -22,11 +22,14 @@
                 <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Серийник" Binding="{Binding SerialNumber}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Группа" Binding="{Binding Groups.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Группа" Binding="{Binding GroupName}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="1">
-            <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Left">Поиск</Button>
+            <StackPanel Margin="10" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock>Поиск по серийному номеру:</TextBlock>
+                <TextBox Width="250" TextChanged="TextBox_TextChanged"></TextBox>
+            </StackPanel>
             <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Center" Visibility="Hidden">Изменить оборуд</Button>
             <Button Style="{StaticResource DefaultButton}" HorizontalAlignment="Right"
                     Command="{Binding DelCommand}">Удалить оборуд.</Button>

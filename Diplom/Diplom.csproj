@@ -134,6 +134,9 @@
     <Compile Include="View\AddMainGroupPage.xaml.cs">
       <DependentUpon>AddMainGroupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddOtherhardwarePage.xaml.cs">
+      <DependentUpon>AddOtherhardwarePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddPrinterPage.xaml.cs">
       <DependentUpon>AddPrinterPage.xaml</DependentUpon>
     </Compile>
@@ -158,12 +161,16 @@
     <Compile Include="View\MainGroupPage.xaml.cs">
       <DependentUpon>MainGroupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\OtherHardwaresPage.xaml.cs">
+      <DependentUpon>OtherHardwaresPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PrintersPage.xaml.cs">
       <DependentUpon>PrintersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="VM\AddCabinetVM.cs" />
     <Compile Include="VM\AddConsumableVM.cs" />
     <Compile Include="VM\AddMainGroupVM.cs" />
+    <Compile Include="VM\AddOtherHardwareVM.cs" />
     <Compile Include="VM\AddPrinterVM.cs" />
     <Compile Include="VM\AddWorkerVM.cs" />
     <Compile Include="VM\ConsumablesVM.cs" />
@@ -173,6 +180,7 @@
     <Compile Include="VM\ListWorkersVM.cs" />
     <Compile Include="VM\MainGroupVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
+    <Compile Include="VM\OtherHardwaresVM.cs" />
     <Compile Include="VM\PrintersVM.cs" />
     <Compile Include="Workers.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -190,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddMainGroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddOtherhardwarePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,6 +249,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\OtherHardwaresPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PrintersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

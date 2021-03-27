@@ -24,6 +24,7 @@ namespace Diplom
         public int Id { get; set; }
         public string Number { get; set; }
         public string Floor { get; set; }
+        public string Corpus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Histoty> Histoty { get; set; }

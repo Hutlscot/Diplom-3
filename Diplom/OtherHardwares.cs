@@ -16,6 +16,7 @@ namespace Diplom
     {
         public int Id { get; set; }
         public string Description { get; set; }
+        public int Amount { get; set; }
     
         public virtual Hardware Hardware { get; set; }
     }
