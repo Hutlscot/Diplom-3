@@ -13,6 +13,15 @@
           <Property Name="Number" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Floor" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Consumables">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Interface" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Hardware">
           <Key>
             <PropertyRef Name="Id" />
@@ -75,25 +84,16 @@
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Position" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Сonsumables">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Interface" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Amount" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Consumables_ToHardware">
+        <Association Name="FK_Consum_ToHardware">
           <End Role="Hardware" Type="Self.Hardware" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Сonsumables" Type="Self.Сonsumables" Multiplicity="0..1" />
+          <End Role="Consumables" Type="Self.Consumables" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Hardware">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Сonsumables">
+            <Dependent Role="Consumables">
               <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -190,6 +190,7 @@
         </Association>
         <EntityContainer Name="Хранилище DatabaseModelContainer">
           <EntitySet Name="Cabinets" EntityType="Self.Cabinets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consumables" EntityType="Self.Consumables" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hardware" EntityType="Self.Hardware" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Histoty" EntityType="Self.Histoty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MainGroup" EntityType="Self.MainGroup" Schema="dbo" store:Type="Tables" />
@@ -197,10 +198,9 @@
           <EntitySet Name="Printers" EntityType="Self.Printers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResponsiblePersons" EntityType="Self.ResponsiblePersons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Workers" EntityType="Self.Workers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Сonsumables" EntityType="Self.Сonsumables" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Consumables_ToHardware" Association="Self.FK_Consumables_ToHardware">
+          <AssociationSet Name="FK_Consum_ToHardware" Association="Self.FK_Consum_ToHardware">
             <End Role="Hardware" EntitySet="Hardware" />
-            <End Role="Сonsumables" EntitySet="Сonsumables" />
+            <End Role="Consumables" EntitySet="Consumables" />
           </AssociationSet>
           <AssociationSet Name="FK_Histoty_ToCabinet" Association="Self.FK_Histoty_ToCabinet">
             <End Role="Cabinets" EntitySet="Cabinets" />
@@ -237,20 +237,20 @@
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ConnectionDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cabinets" EntityType="DatabaseModel.Cabinets" />
+          <EntitySet Name="Consumables" EntityType="DatabaseModel.Consumables" />
           <EntitySet Name="Hardware" EntityType="DatabaseModel.Hardware" />
           <EntitySet Name="Histoty" EntityType="DatabaseModel.Histoty" />
           <EntitySet Name="MainGroup" EntityType="DatabaseModel.MainGroup" />
           <EntitySet Name="OtherHardwares" EntityType="DatabaseModel.OtherHardwares" />
           <EntitySet Name="Printers" EntityType="DatabaseModel.Printers" />
           <EntitySet Name="Workers" EntityType="DatabaseModel.Workers" />
-          <EntitySet Name="Сonsumables" EntityType="DatabaseModel.Сonsumables" />
           <AssociationSet Name="FK_Histoty_ToCabinet" Association="DatabaseModel.FK_Histoty_ToCabinet">
             <End Role="Cabinets" EntitySet="Cabinets" />
             <End Role="Histoty" EntitySet="Histoty" />
           </AssociationSet>
-          <AssociationSet Name="FK_Consumables_ToHardware" Association="DatabaseModel.FK_Consumables_ToHardware">
+          <AssociationSet Name="FK_Consum_ToHardware" Association="DatabaseModel.FK_Consum_ToHardware">
             <End Role="Hardware" EntitySet="Hardware" />
-            <End Role="Сonsumables" EntitySet="Сonsumables" />
+            <End Role="Consumables" EntitySet="Consumables" />
           </AssociationSet>
           <AssociationSet Name="FK_Histoty_ToHardware" Association="DatabaseModel.FK_Histoty_ToHardware">
             <End Role="Hardware" EntitySet="Hardware" />
@@ -283,6 +283,16 @@
           <NavigationProperty Name="Histoty" Relationship="DatabaseModel.FK_Histoty_ToCabinet" FromRole="Cabinets" ToRole="Histoty" />
           <NavigationProperty Name="Workers" Relationship="DatabaseModel.ResponsiblePersons" FromRole="Cabinets" ToRole="Workers" />
         </EntityType>
+        <EntityType Name="Consumables">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Interface" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Consum_ToHardware" FromRole="Consumables" ToRole="Hardware" />
+        </EntityType>
         <EntityType Name="Hardware">
           <Key>
             <PropertyRef Name="Id" />
@@ -290,7 +300,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Сonsumables" Relationship="DatabaseModel.FK_Consumables_ToHardware" FromRole="Hardware" ToRole="Сonsumables" />
+          <NavigationProperty Name="Consumables" Relationship="DatabaseModel.FK_Consum_ToHardware" FromRole="Hardware" ToRole="Consumables" />
           <NavigationProperty Name="Histoty" Relationship="DatabaseModel.FK_Histoty_ToHardware" FromRole="Hardware" ToRole="Histoty" />
           <NavigationProperty Name="MainGroup" Relationship="DatabaseModel.FK_MainGroup_ToHardware" FromRole="Hardware" ToRole="MainGroup" />
           <NavigationProperty Name="OtherHardwares" Relationship="DatabaseModel.FK_OtherHardwares_ToHardware" FromRole="Hardware" ToRole="OtherHardwares" />
@@ -348,16 +358,6 @@
           <Property Name="Position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cabinets" Relationship="DatabaseModel.ResponsiblePersons" FromRole="Workers" ToRole="Cabinets" />
         </EntityType>
-        <EntityType Name="Сonsumables">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Interface" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Amount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Hardware" Relationship="DatabaseModel.FK_Consumables_ToHardware" FromRole="Сonsumables" ToRole="Hardware" />
-        </EntityType>
         <Association Name="FK_Histoty_ToCabinet">
           <End Type="DatabaseModel.Cabinets" Role="Cabinets" Multiplicity="1" />
           <End Type="DatabaseModel.Histoty" Role="Histoty" Multiplicity="*" />
@@ -370,16 +370,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Consumables_ToHardware">
+        <Association Name="FK_Consum_ToHardware">
           <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="DatabaseModel.Сonsumables" Role="Сonsumables" Multiplicity="0..1" />
+          <End Type="DatabaseModel.Consumables" Role="Consumables" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Hardware">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Сonsumables">
+            <Dependent Role="Consumables">
               <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -400,7 +400,7 @@
           <End Type="DatabaseModel.Hardware" Role="Hardware" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="DatabaseModel.MainGroup" Role="MainGroup" Multiplicity="1" />
+          <End Type="DatabaseModel.MainGroup" Role="MainGroup" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Hardware">
               <PropertyRef Name="Id" />
@@ -453,6 +453,16 @@
               <MappingFragment StoreEntitySet="Cabinets">
                 <ScalarProperty Name="Floor" ColumnName="Floor" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consumables">
+            <EntityTypeMapping TypeName="DatabaseModel.Consumables">
+              <MappingFragment StoreEntitySet="Consumables">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Interface" ColumnName="Interface" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -513,16 +523,6 @@
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Сonsumables">
-            <EntityTypeMapping TypeName="DatabaseModel.Сonsumables">
-              <MappingFragment StoreEntitySet="Сonsumables">
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Interface" ColumnName="Interface" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -10,6 +10,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Consumables">
+      <EntityTypeMapping TypeName="DatabaseModel.Consumables">
+        <MappingFragment StoreEntitySet="Consumables">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Interface" ColumnName="Interface" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Hardware">
       <EntityTypeMapping TypeName="DatabaseModel.Hardware">
         <MappingFragment StoreEntitySet="Hardware">
@@ -66,16 +76,6 @@
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Сonsumables">
-      <EntityTypeMapping TypeName="DatabaseModel.Сonsumables">
-        <MappingFragment StoreEntitySet="Сonsumables">
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="Interface" ColumnName="Interface" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

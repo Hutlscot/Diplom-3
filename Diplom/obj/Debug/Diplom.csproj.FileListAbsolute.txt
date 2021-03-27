@@ -90,3 +90,7 @@ D:\Dip\Diplom\obj\Debug\View\PrintersPage.g.cs
 D:\Dip\Diplom\obj\Debug\View\PrintersPage.baml
 D:\Dip\Diplom\obj\Debug\View\AddPrinterPage.g.cs
 D:\Dip\Diplom\obj\Debug\View\AddPrinterPage.baml
+D:\Dip\Diplom\obj\Debug\View\ConsumablesPage.g.cs
+D:\Dip\Diplom\obj\Debug\View\ConsumablesPage.baml
+D:\Dip\Diplom\obj\Debug\View\AddConsumablePage.g.cs
+D:\Dip\Diplom\obj\Debug\View\AddConsumablePage.baml

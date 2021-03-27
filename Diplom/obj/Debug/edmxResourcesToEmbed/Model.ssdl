@@ -8,6 +8,15 @@
     <Property Name="Number" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="Floor" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Consumables">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Interface" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Hardware">
     <Key>
       <PropertyRef Name="Id" />
@@ -70,25 +79,16 @@
     <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Position" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Сonsumables">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Interface" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="Amount" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_Consumables_ToHardware">
+  <Association Name="FK_Consum_ToHardware">
     <End Role="Hardware" Type="Self.Hardware" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="Сonsumables" Type="Self.Сonsumables" Multiplicity="0..1" />
+    <End Role="Consumables" Type="Self.Consumables" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Hardware">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Сonsumables">
+      <Dependent Role="Consumables">
         <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
@@ -185,6 +185,7 @@
   </Association>
   <EntityContainer Name="Хранилище DatabaseModelContainer">
     <EntitySet Name="Cabinets" EntityType="Self.Cabinets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consumables" EntityType="Self.Consumables" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Hardware" EntityType="Self.Hardware" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Histoty" EntityType="Self.Histoty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MainGroup" EntityType="Self.MainGroup" Schema="dbo" store:Type="Tables" />
@@ -192,10 +193,9 @@
     <EntitySet Name="Printers" EntityType="Self.Printers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ResponsiblePersons" EntityType="Self.ResponsiblePersons" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Workers" EntityType="Self.Workers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Сonsumables" EntityType="Self.Сonsumables" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Consumables_ToHardware" Association="Self.FK_Consumables_ToHardware">
+    <AssociationSet Name="FK_Consum_ToHardware" Association="Self.FK_Consum_ToHardware">
       <End Role="Hardware" EntitySet="Hardware" />
-      <End Role="Сonsumables" EntitySet="Сonsumables" />
+      <End Role="Consumables" EntitySet="Consumables" />
     </AssociationSet>
     <AssociationSet Name="FK_Histoty_ToCabinet" Association="Self.FK_Histoty_ToCabinet">
       <End Role="Cabinets" EntitySet="Cabinets" />

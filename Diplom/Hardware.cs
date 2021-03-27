@@ -24,7 +24,7 @@ namespace Diplom
         public string Name { get; set; }
         public string SerialNumber { get; set; }
     
-        public virtual Сonsumables Сonsumables { get; set; }
+        public virtual Consumables Consumables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Histoty> Histoty { get; set; }
         public virtual MainGroup MainGroup { get; set; }

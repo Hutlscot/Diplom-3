@@ -1,0 +1,30 @@
+﻿<Page x:Class="Diplom.View.AddConsumablePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom.VM"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Добавлеине расходников" Style="{StaticResource StylePage}">
+
+    <Page.DataContext>
+        <local:AddConsumableVM></local:AddConsumableVM>
+    </Page.DataContext>
+    <Grid>
+        <StackPanel Width="300" Margin="10" Orientation="Vertical">
+            <TextBlock Margin="5">Название:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedHardware.Name}"></TextBox>
+            <TextBlock Margin="5">Серийный номер:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedHardware.SerialNumber}"></TextBox>
+            <TextBlock Margin="5">Модель:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedItem.Model}"></TextBox>
+            <TextBlock Margin="5">Интерфейс:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedItem.Interface}"></TextBox>
+            <TextBlock Margin="5">Количество:</TextBlock>
+            <TextBox Style="{StaticResource DefaultTextBox}" Text="{Binding addedItem.Amount}"></TextBox>
+            
+            <Button Style="{StaticResource DefaultButton}" Command="{Binding AddCommand}">Добавить</Button>
+        </StackPanel>
+    </Grid>
+</Page>

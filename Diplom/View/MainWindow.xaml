@@ -46,6 +46,9 @@
             <Button Style="{StaticResource DefaultButton}"  
                     Command="{Binding CommandGoTo}"
                     CommandParameter="Принтеры" Content="Принтеры"></Button>
+            <Button Style="{StaticResource DefaultButton}"  
+                    Command="{Binding CommandGoTo}"
+                    CommandParameter="Расходники" Content="Расходники"></Button>
         </StackPanel>
 
         <!--заголовок-->

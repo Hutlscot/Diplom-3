@@ -72,6 +72,16 @@ namespace Diplom.OtherClasses
                         frame.Navigate(new AddPrinterPage());
                         break;
                     }
+                case "Расходники":
+                    {
+                        frame.Navigate(new ConsumablesPage());
+                        break;
+                    }
+                case "Добавление расходников":
+                    {
+                        frame.Navigate(new AddConsumablePage());
+                        break;
+                    }
 
                 default:
                     {

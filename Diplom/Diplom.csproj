@@ -82,6 +82,9 @@
     <Compile Include="Cabinets.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Consumables.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Hardware.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -122,6 +125,9 @@
     <Compile Include="View\AddCabinetPage.xaml.cs">
       <DependentUpon>AddCabinetPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddConsumablePage.xaml.cs">
+      <DependentUpon>AddConsumablePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddHistory.xaml.cs">
       <DependentUpon>AddHistory.xaml</DependentUpon>
     </Compile>
@@ -133,6 +139,9 @@
     </Compile>
     <Compile Include="View\AddWorkerPage.xaml.cs">
       <DependentUpon>AddWorkerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConsumablesPage.xaml.cs">
+      <DependentUpon>ConsumablesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HistoryPage.xaml.cs">
       <DependentUpon>HistoryPage.xaml</DependentUpon>
@@ -153,9 +162,11 @@
       <DependentUpon>PrintersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="VM\AddCabinetVM.cs" />
+    <Compile Include="VM\AddConsumableVM.cs" />
     <Compile Include="VM\AddMainGroupVM.cs" />
     <Compile Include="VM\AddPrinterVM.cs" />
     <Compile Include="VM\AddWorkerVM.cs" />
+    <Compile Include="VM\ConsumablesVM.cs" />
     <Compile Include="VM\HistoryVM.cs" />
     <Compile Include="VM\ListCabinetsVM.cs" />
     <Compile Include="VM\ListHardwareVM.cs" />
@@ -166,10 +177,11 @@
     <Compile Include="Workers.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Сonsumables.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Page Include="View\AddCabinetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddConsumablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddWorkerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ConsumablesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
